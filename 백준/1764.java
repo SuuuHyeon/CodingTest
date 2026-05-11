@@ -5,12 +5,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
-        // 1. split 대신 StringTokenizer를 사용하여 공백 예외 처리 방지
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
-        // 2. HashMap 대신 HashSet 사용 (메모리 절약 및 성능 향상)
         HashSet<String> set = new HashSet<>();
         ArrayList<String> list = new ArrayList<>();
 
