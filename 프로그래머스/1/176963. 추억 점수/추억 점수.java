@@ -1,23 +1,25 @@
-import java.util.*;
+import java.util.HashMap;
 
 class Solution {
-    public static List<Integer> solution(String[] name, int[] yearning, String[][] photo) {
-        ArrayList<Integer> answer = new ArrayList<>();
-
+    public int[] solution(String[] name, int[] yearning, String[][] photo) {
+        // 이름 → 그리움 점수 저장
         HashMap<String, Integer> map = new HashMap<>();
-
         for (int i = 0; i < name.length; i++) {
-            // 해당 사람의 이름, 점수 넣기
             map.put(name[i], yearning[i]);
         }
 
+        int[] answer = new int[photo.length];
 
+        // 한 장씩 확인
         for (int i = 0; i < photo.length; i++) {
             int sum = 0;
-            for (int j = 0; j < photo[i].length; j++) {
-                sum += map.getOrDefault(photo[i][j], 0);
+            // 사진 속 한 명씩 확인
+            for (String person : photo[i]) {
+                if (map.containsKey(person)) {
+                    sum += map.get(person);
+                }
             }
-            answer.add(sum);
+            answer[i] = sum;
         }
 
         return answer;
